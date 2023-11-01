@@ -7,11 +7,11 @@
 
 import Vapor
 
-struct RCEntitlement: Content {
-    let expiresAt: Date
-    let gracePeriodExpiresAt: Date?
-    let productIdentifier: String
-    let purchasedAt: Date
+public struct RCEntitlement: Content {
+    public let expiresAt: Date
+    public let gracePeriodExpiresAt: Date?
+    public let productIdentifier: String
+    public  let purchasedAt: Date
 
     enum CodingKeys: String, CodingKey {
         case expiresAt = "expires_date"

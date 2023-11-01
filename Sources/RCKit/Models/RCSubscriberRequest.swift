@@ -7,6 +7,6 @@
 
 import Vapor
 
-struct RCSubscriberRequest<E: Content>: Content {
-    let subscriber: RCSubscriber<E>
+public struct RCSubscriberRequest<E: Content>: Content {
+    public let subscriber: RCSubscriber<E>
 }

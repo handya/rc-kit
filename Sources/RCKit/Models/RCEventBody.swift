@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct RCEventBody: Decodable {
-    let version: String
-    let event: RCEvent
+public struct RCEventBody: Decodable {
+    public let version: String
+    public let event: RCEvent
 
     enum CodingKeys: String, CodingKey {
         case version = "api_version"

@@ -7,7 +7,7 @@
 
 import Vapor
 
-class RevenueCatClient {
+public class RevenueCatClient {
 
     // MARK: - Properties
 

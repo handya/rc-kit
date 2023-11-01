@@ -7,12 +7,12 @@
 
 import Vapor
 
-extension Application {
-    public var revenueCat: RevenueCat {
+public extension Application {
+    var revenueCat: RevenueCat {
         .init(application: self)
     }
 
-    public struct RevenueCat {
+    struct RevenueCat {
         let application: Application
 
         struct ConfigurationKey: StorageKey {
@@ -39,7 +39,7 @@ extension Application {
 
 // MARK: - RevenueCat
 
-extension Application.RevenueCat {
+public extension Application.RevenueCat {
     func getSubscriber<E: Content>(_ revenueCatID: String) async throws -> RCSubscriber<E> {
         return try await client.getSubscriber(revenueCatID)
     }

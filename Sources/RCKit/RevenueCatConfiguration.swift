@@ -9,4 +9,8 @@ import Vapor
 
 public struct RevenueCatConfiguration: Content {
     let token: String
+
+    public init(token: String) {
+        self.token = token
+    }
 }

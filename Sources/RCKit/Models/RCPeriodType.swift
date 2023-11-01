@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RCPeriodType: String, Decodable {
+public enum RCPeriodType: String, Decodable {
     case trial = "TRIAL"
     case intro = "INTRO"
     case normal = "NORMAL"

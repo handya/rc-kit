@@ -7,14 +7,14 @@
 
 import Vapor
 
-struct RCSubscriber<E: Content>: Content {
-    let entitlements: E
-    let firstSeen: Date?
-    let lastSeen: Date?
-    let managementUrl: String?
-    let originalAppUserId: String?
-    let originalApplicationVersion: String?
-    let originalPurchaseDate: Date?
+public struct RCSubscriber<E: Content>: Content {
+    public let entitlements: E
+    public let firstSeen: Date?
+    public let lastSeen: Date?
+    public let managementUrl: String?
+    public let originalAppUserId: String?
+    public let originalApplicationVersion: String?
+    public let originalPurchaseDate: Date?
 
     enum CodingKeys: String, CodingKey {
         case entitlements

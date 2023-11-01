@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RCStore: String, Decodable {
+public enum RCStore: String, Decodable {
     case playStore = "PLAY_STORE"
     case appStore = "APP_STORE"
     case stripe = "STRIPE"

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RCEnvironment: String, Decodable {
+public enum RCEnvironment: String, Decodable {
     case sandbox = "SANDBOX"
     case production = "PRODUCTION"
 }

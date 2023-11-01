@@ -7,30 +7,30 @@
 
 import Foundation
 
-struct RCEvent {
-    let id: String
-    let aliases: [String]?
-    let appUserId: String?
-    let currency: String?
-    let entitlementId: String? // Deprecated. See entitlement_ids.
-    let entitlementIds: [String]?
-    let environment: RCEnvironment
-    let eventTimestamp: Date
-    let expirationAt: Date?
-    let isFamilyShare: Bool?
-    let originalAppUserId: String?
-    let originalTransactionId: String?
-    let periodType: RCPeriodType?
-    let presentedOfferingId: String?
-    let price: Double?
-    let priceInPurchasedCurrency: Double?
-    let productId: String?
-    let purchasedAt: Date
-    let store: RCStore
-    let takehomePercentage: Float?
-    let transactionId: String?
-    let type: RCEventType
-    let cancelReason: RCCancelReason?
+public struct RCEvent {
+    public let id: String
+    public let aliases: [String]?
+    public let appUserId: String?
+    public let currency: String?
+    public let entitlementId: String? // Deprecated. See entitlement_ids.
+    public let entitlementIds: [String]?
+    public let environment: RCEnvironment
+    public let eventTimestamp: Date
+    public let expirationAt: Date?
+    public let isFamilyShare: Bool?
+    public let originalAppUserId: String?
+    public let originalTransactionId: String?
+    public let periodType: RCPeriodType?
+    public let presentedOfferingId: String?
+    public let price: Double?
+    public let priceInPurchasedCurrency: Double?
+    public let productId: String?
+    public let purchasedAt: Date
+    public let store: RCStore
+    public let takehomePercentage: Float?
+    public let transactionId: String?
+    public let type: RCEventType
+    public let cancelReason: RCCancelReason?
 }
 
 extension RCEvent: Decodable {
@@ -60,7 +60,7 @@ extension RCEvent: Decodable {
         case cancelReason = "cancel_reason"
     }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
         self.aliases = try container.decodeIfPresent([String].self, forKey: .aliases)

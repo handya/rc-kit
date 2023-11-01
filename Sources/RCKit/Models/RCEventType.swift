@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RCEventType: String, Decodable, CaseIterable {
+public enum RCEventType: String, Decodable, CaseIterable {
     case test = "TEST"
     case expiration = "EXPIRATION"
     case initialPurchase = "INITIAL_PURCHASE"

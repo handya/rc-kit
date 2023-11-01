@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum RCCancelReason: String, Decodable {
+public enum RCCancelReason: String, Decodable {
     case unsubscribe = "UNSUBSCRIBE"
     case billingError = "BILLING_ERROR"
     case developerInitiated = "DEVELOPER_INITIATED"
