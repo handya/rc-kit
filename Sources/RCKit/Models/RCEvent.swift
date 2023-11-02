@@ -25,7 +25,7 @@ public struct RCEvent {
     public let price: Double?
     public let priceInPurchasedCurrency: Double?
     public let productId: String?
-    public let purchasedAt: Date
+    public let purchasedAt: Date?
     public let store: RCStore
     public let takehomePercentage: Float?
     public let transactionId: String?
@@ -91,7 +91,11 @@ extension RCEvent: Decodable {
         self.price = try container.decodeIfPresent(Double.self, forKey: .price)
         self.priceInPurchasedCurrency = try container.decodeIfPresent(Double.self, forKey: .priceInPurchasedCurrency)
         self.productId = try container.decodeIfPresent(String.self, forKey: .productId)
-        self.purchasedAt = Date(timeIntervalSince1970: try container.decode(TimeInterval.self, forKey: .purchasedAt) / 1000)
+        if let expirationAtInterval =  try container.decodeIfPresent(TimeInterval.self, forKey: .purchasedAt) {
+            self.purchasedAt = Date(timeIntervalSince1970: expirationAtInterval / 1000)
+        } else {
+            self.purchasedAt = nil
+        }
         self.store = try container.decode(RCStore.self, forKey: .store)
         self.takehomePercentage = try container.decodeIfPresent(Float.self, forKey: .takehomePercentage)
         self.transactionId = try container.decodeIfPresent(String.self, forKey: .transactionId)
