@@ -7,7 +7,8 @@
 
 import Foundation
 
-public enum RCEventType: String, Decodable, CaseIterable {
+public enum RCEventType: String {
+    case unknown
     case test = "TEST"
     case expiration = "EXPIRATION"
     case initialPurchase = "INITIAL_PURCHASE"
@@ -19,4 +20,15 @@ public enum RCEventType: String, Decodable, CaseIterable {
     case billingIssue = "BILLING_ISSUE"
     case subscriberAlias = "SUBSCRIBER_ALIAS"
     case subscriptionPaused = "SUBSCRIPTION_PAUSED"
+    case transfer = "TRANSFER"
+}
+
+// MARK: - Decodable
+
+extension RCEventType: Decodable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let rawValue = try container.decode(String.self)
+        self = RCEventType(rawValue: rawValue) ?? .unknown
+    }
 }

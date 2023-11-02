@@ -31,7 +31,12 @@ public struct RCEvent {
     public let transactionId: String?
     public let type: RCEventType
     public let cancelReason: RCCancelReason?
+    public let appId: String?
+    public let transferredFrom: [String]?
+    public let transferredTo: [String]?
 }
+
+// MARK: - Decodable
 
 extension RCEvent: Decodable {
     enum CodingKeys: String, CodingKey {
@@ -58,6 +63,9 @@ extension RCEvent: Decodable {
         case transactionId = "transaction_id"
         case type
         case cancelReason = "cancel_reason"
+        case appId = "app_id"
+        case transferredFrom = "transferred_from"
+        case transferredTo = "transferred_to"
     }
 
     public init(from decoder: Decoder) throws {
@@ -89,5 +97,8 @@ extension RCEvent: Decodable {
         self.transactionId = try container.decodeIfPresent(String.self, forKey: .transactionId)
         self.type = try container.decode(RCEventType.self, forKey: .type)
         self.cancelReason = try container.decodeIfPresent(RCCancelReason.self, forKey: .cancelReason)
+        self.appId = try container.decodeIfPresent(String.self, forKey: .appId)
+        self.transferredFrom = try container.decodeIfPresent([String].self, forKey: .transferredFrom)
+        self.transferredTo = try container.decodeIfPresent([String].self, forKey: .transferredTo)
     }
 }

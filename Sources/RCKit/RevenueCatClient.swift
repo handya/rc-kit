@@ -33,7 +33,8 @@ public class RevenueCatClient {
     }
 
     func getSubscriber<E: Content>(_ revenueCatID: String) async throws -> RCSubscriber<E> {
-        return try await client.get(createUri(revenueCatID: revenueCatID)) { req in
+        let urlString: String = "https://api.revenuecat.com/v1/subscribers/\(revenueCatID)"
+        return try await client.get(URI(string: urlString)) { req in
             req.headers = self.headers()
         }
         .flatMapThrowing { res -> RCSubscriberRequest in
@@ -43,13 +44,7 @@ public class RevenueCatClient {
                 throw error
             }
         }
-        .map(\.subscriber).get()
-    }
-}
-
-private extension RevenueCatClient {
-    func createUri(revenueCatID: String) -> URI {
-        let urlString: String = "https://api.revenuecat.com/v1/subscribers/\(revenueCatID)"
-        return URI(string: urlString)
+        .map(\.subscriber)
+        .get()
     }
 }
